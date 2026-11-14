@@ -165,6 +165,13 @@ The kernal corresponds to the C128 kernal DolphinDos26, with SpeedDOS instead of
 - There is no cassette and no RS-232.
 - Technical details: [docs/en/c128-kernal.md](docs/en/c128-kernal.md).
 
+<p align="center">
+<img src="assets/sd_06_c128_startbild.png" alt="Boot screen of the C128 kernal SpeedDos26 (40 columns)" width="400">
+<img src="assets/sd_07_c128_startbild_vdc.png" alt="Boot screen of the C128 kernal SpeedDos26 (80 columns, VDC)" width="400">
+</p>
+
+<p align="center"><em>Boot screen of the C128 kernal SpeedDos26 in 40-column mode and in 80-column mode (VDC).</em></p>
+
 ## Quick start
 
 After power-on the C64 shows the coloured power-on screen. **F8** shows the message of the drive, after power-on `73,SPEEDDOS26   1541,00,00`; **F7** shows the directory.
@@ -478,6 +485,13 @@ Der Kernal entspricht dem C128-Kernal DolphinDos26, mit SpeedDOS statt DolphinDO
 - **Einschaltbild:** `SPEEDDOS26+JIFFYDOS+SD2IEC`, darunter der Hinweis auf den Multi-Speeder und `PAL SYSTEM` bzw. `NTSC SYSTEM`.
 - Kassette und RS-232 gibt es nicht.
 - Technische Einzelheiten: [docs/de/c128-kernal.md](docs/de/c128-kernal.md).
+
+<p align="center">
+<img src="assets/sd_06_c128_startbild.png" alt="Einschaltbild des C128-Kernals SpeedDos26 (40 Zeichen)" width="400">
+<img src="assets/sd_07_c128_startbild_vdc.png" alt="Einschaltbild des C128-Kernals SpeedDos26 (80 Zeichen, VDC)" width="400">
+</p>
+
+<p align="center"><em>Einschaltbild des C128-Kernals SpeedDos26 im 40-Zeichen-Modus und im 80-Zeichen-Modus (VDC).</em></p>
 
 ## Schnellstart
 

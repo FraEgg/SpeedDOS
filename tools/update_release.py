@@ -66,7 +66,8 @@ MANUAL_ROMS = ['C64SpeedDos26.bin', 'C64IISpeedDos26.bin', 'C1541SpeedDOS26.bin'
                'C1571CRSpeedDOS26.bin',
                'C128SpeedDos26-DE.bin', 'C128SpeedDos26-EN.bin']
 # Images of the README, from the manual folder
-ASSETS = ['Multi-Speeder_Logo.png', 'sd_01_startbild.png']
+ASSETS = ['Multi-Speeder_Logo.png', 'sd_01_startbild.png', 'sd_06_c128_startbild.png',
+          'sd_07_c128_startbild_vdc.png']
 # Words that must not appear in README.md, LICENSE.md and docs/
 FORBIDDEN = re.compile(r'\b(vice|emulator\w*|emuliert\w*|emulated|x64sc|x128)\b', re.I)
 STAMP = REPO / 'tools' / 'derived-from.json'
