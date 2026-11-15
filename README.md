@@ -115,6 +115,7 @@ The kernal also works without the parallel cable and with any drive: on every ac
 - Shows the transfer method when loading: `LOADING SD:` (parallel cable) or `LOADING JD:` (JiffyDOS drive, SD2IEC), followed by start and end address.
 - The coloured power-on screen and the function key assignment of DolphinDos26, with four additional keys for SD2IEC and printer.
 - LOAD and SAVE without a device address, DOS commands with `@` or `>`, `@$` shows the directory without changing the program in memory.
+- `@8` to `@11` (two digits up to `@19`) select the device; if it does not answer, `?DEVICE NOT PRESENT ERROR` appears.
 - BASIC extras of SpeedDOS+: `!` (OLD), numbers with `$` (hexadecimal), `%` (binary) and `&` (octal), LIST with visible control characters.
 - Also tested with S-JiffyDOS 1541 (SJD41), an extension of the JiffyDOS ROM for the 1541 by Jochen Adler that the kernal addresses like a JiffyDOS drive (display `LOADING JD:`). Further information: [S-JIFFYDOS 1541 (funet.fi / zimmers.net)](https://bio.nic.funet.fi/pub/cbm/c64/diskutil/misc/s-jiffydos1541.html), [Commodore News: SJD41 (2013)](https://www.commodore-news.com/news/item/2755/en/mobile), [RetroTechCollection: JiffyDOS Kernal Upgrade](https://wiki.retrotechcollection.com/JiffyDOS_Kernal_Upgrade).
 - Removed compared with SpeedDOS+: the mini monitor, the Centronics interface and the screen hardcopy; the space is needed for the JiffyDOS protocol.
@@ -436,6 +437,7 @@ Der Kernal arbeitet auch ohne Parallelkabel und mit jedem Laufwerk: Er erkennt b
 - Zeigt beim Laden die Übertragungsart an: `LOADING SD:` (Parallelkabel) bzw. `LOADING JD:` (JiffyDOS-Laufwerk, SD2IEC), danach Start- und Endadresse.
 - Das farbige Einschaltbild und die Belegung der Funktionstasten aus DolphinDos26, mit vier zusätzlichen Tasten für SD2IEC und Drucker.
 - LOAD und SAVE ohne Geräteadresse, DOS-Befehle mit `@` oder `>`, `@$` zeigt das Inhaltsverzeichnis, ohne das Programm im Speicher zu verändern.
+- `@8` bis `@11` (zweistellig bis `@19`) wählen das Gerät; antwortet es nicht, erscheint `?DEVICE NOT PRESENT ERROR`.
 - BASIC-Erweiterungen von SpeedDOS+: `!` (OLD), Zahlen mit `$` (hexadezimal), `%` (binär) und `&` (oktal), LIST mit sichtbaren Steuerzeichen.
 - Auch mit S-JiffyDOS 1541 (SJD41) getestet, einer Erweiterung des JiffyDOS-ROMs für die 1541 von Jochen Adler, die der Kernal wie ein JiffyDOS-Laufwerk anspricht (Anzeige `LOADING JD:`). Weitere Informationen: [S-JIFFYDOS 1541 (funet.fi / zimmers.net)](https://bio.nic.funet.fi/pub/cbm/c64/diskutil/misc/s-jiffydos1541.html), [Commodore News: SJD41 (2013)](https://www.commodore-news.com/news/item/2755/en/mobile), [RetroTechCollection: JiffyDOS Kernal Upgrade](https://wiki.retrotechcollection.com/JiffyDOS_Kernal_Upgrade).
 - Gegenüber SpeedDOS+ entfallen der Mini-Monitor, die Centronics-Schnittstelle und der Bildschirmausdruck; der Platz wird für das JiffyDOS-Protokoll gebraucht.

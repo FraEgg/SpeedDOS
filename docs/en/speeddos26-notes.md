@@ -139,6 +139,11 @@ input in BASIC direct mode, not with `INPUT` in a running program.
 CTRL-DEL and CTRL-HOME have been given the codes `$0B`/`$0C` (before `$84`/`$82`, now C=F5/C=F3);
 CTRL-K and CTRL-L therefore have the same effect.
 
+Device selection (`sd26_ziffer`): besides `@8` and `@9`, a `1` followed by a digit counts as a device
+number (`@10` to `@19`). If the device of a DOS command does not answer, BASIC now reports
+`?DEVICE NOT PRESENT ERROR` (`sd26_kein_laufwerk`); SpeedDOS+ returned without a message.
+230 bytes are still free.
+
 ### JiffyDOS (`jiffydos`)
 
 The JiffyDOS protocol has been taken over from the DolphinDos26 kernal (`../C64DD26`) and adapted to
