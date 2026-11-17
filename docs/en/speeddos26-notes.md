@@ -142,7 +142,12 @@ CTRL-K and CTRL-L therefore have the same effect.
 Device selection (`sd26_ziffer`): besides `@8` and `@9`, a `1` followed by a digit counts as a device
 number (`@10` to `@19`). If the device of a DOS command does not answer, BASIC now reports
 `?DEVICE NOT PRESENT ERROR` (`sd26_kein_laufwerk`); SpeedDOS+ returned without a message.
-230 bytes are still free.
+
+Drive change (`sd26_ctrl`, `sd26_nl`): CTRL-D changes in BASIC direct mode to the next drive that is
+present (devices 8 to 19, then 8 again) and shows the device number, as with JiffyDOS. The check uses
+LISTEN, secondary address `$EF` and UNLISTEN; this closes the command channel on every drive that is
+checked and with it the files open there. The C128 kernals have the same function (`dw_eingabe`).
+141 bytes are still free.
 
 ### JiffyDOS (`jiffydos`)
 

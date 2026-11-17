@@ -48,13 +48,15 @@ NOTES = {
     'c1571-firmware.md': ('SpeedDos26', '1571/README.md'),
     # no development note for the C128 kernal: derived from the manual chapter and the Makefile
     'c128-kernal.md': ('SpeedDos26', 'c128/Makefile'),
+    'vic20-kernal.md': ('SpeedDos26', 'vic20/README.md'),
 }
 # Only these files are published in rom/. Never add an image that holds JiffyDOS drive
 # firmware (for example C1541_29F040DEV.bin or the AM27C040 image).
 ROMS = ['C64SpeedDos26.bin', 'C64IISpeedDos26.bin',
         'C1541SpeedDOS26.bin', 'C1541IISpeedDOS26.bin',
         'C1571SpeedDOS26.bin', 'C1571CRSpeedDOS26.bin',
-        'C128SpeedDos26-DE.bin', 'C128SpeedDos26-EN.bin', 'C1541_29F040.BIN']
+        'C128SpeedDos26-DE.bin', 'C128SpeedDos26-EN.bin', 'C1541_29F040.BIN',
+        'VIC20SpeedDos26PAL.bin', 'VIC20SpeedDos26NTSC.bin']
 # Optional, published when present in Builds (none at the moment)
 OPTIONAL_ROMS = []
 # Every manual goes to manuals/de and manuals/en as PDF (German from Builds,
@@ -64,7 +66,8 @@ MANUALS = {'SpeedDos26_Handbuch.pdf': 'SpeedDos26_Manual.pdf'}
 MANUAL_ROMS = ['C64SpeedDos26.bin', 'C64IISpeedDos26.bin', 'C1541SpeedDOS26.bin',
                'C1541IISpeedDOS26.bin', 'C1541_29F040.BIN', 'C1571SpeedDOS26.bin',
                'C1571CRSpeedDOS26.bin',
-               'C128SpeedDos26-DE.bin', 'C128SpeedDos26-EN.bin']
+               'C128SpeedDos26-DE.bin', 'C128SpeedDos26-EN.bin',
+               'VIC20SpeedDos26PAL.bin', 'VIC20SpeedDos26NTSC.bin']
 # Images of the README, from the manual folder
 ASSETS = ['Multi-Speeder_Logo.png', 'sd_01_startbild.png', 'sd_06_c128_startbild.png',
           'sd_07_c128_startbild_vdc.png']

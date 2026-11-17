@@ -2,7 +2,7 @@
 
 # SpeedDos26
 
-**Kernal for the C64 and the C128 and drive firmware for the 1541 and the 1571 for the SpeedDOS parallel cable: Commodore 1541, 1541-II, the 1541 Switchless 8x Multi-Floppy-Speeder V3 and the 1571 (external 1571 and C128DCR) with the 1571 Switchless Multi-Speeder V3. A further development of SpeedDOS+ with JiffyDOS protocol, SD2IEC keys and 40 tracks.**
+**Kernal for the C64, the C128 and the VIC-20 and drive firmware for the 1541 and the 1571 for the SpeedDOS parallel cable: Commodore 1541, 1541-II, the 1541 Switchless 8x Multi-Floppy-Speeder V3 and the 1571 (external 1571 and C128DCR) with the 1571 Switchless Multi-Speeder V3. A further development of SpeedDOS+ with JiffyDOS protocol, SD2IEC keys and 40 tracks.**
 
 **Language:** [English](#english) · [Deutsch](#deutsch)
 
@@ -23,7 +23,7 @@
 | Switchless 8x Multi-Floppy-Speeder V3 for the external 1571 / für die externe 1571 | [github.com/FraEgg/Switchless-Multi-Speeder-Commodore-1571](https://github.com/FraEgg/Switchless-Multi-Speeder-Commodore-1571) |
 | DolphinDos26 (sister project / Schwesterprojekt) | [github.com/FraEgg/DolphinDOS](https://github.com/FraEgg/DolphinDOS) |
 
-> **Status:** New in this release are the firmware for the 1571 in two builds (`C1571SpeedDOS26.bin` for the external 1571, `C1571CRSpeedDOS26.bin` for the C128DCR; the drive switches to 2 MHz by itself) and the C128 kernal (`C128SpeedDos26-DE.bin`, `C128SpeedDos26-EN.bin`). The manual covers all parts. The PIA parallel port adapter for a 1571 without Multi-Speeder is a draft (schematic rev. 0.1, not built, not measured). Reports and feedback are very welcome.
+> **Status:** New are the kernals for the VIC-20 (`VIC20SpeedDos26PAL.bin`, `VIC20SpeedDos26NTSC.bin`). Also new in this release are the firmware for the 1571 in two builds (`C1571SpeedDOS26.bin` for the external 1571, `C1571CRSpeedDOS26.bin` for the C128DCR; the drive switches to 2 MHz by itself) and the C128 kernal (`C128SpeedDos26-DE.bin`, `C128SpeedDos26-EN.bin`). The manual covers all parts. The PIA parallel port adapter for a 1571 without Multi-Speeder is a draft (schematic rev. 0.1, not built, not measured). Reports and feedback are very welcome.
 
 ---
 
@@ -33,7 +33,7 @@
 
 SpeedDos26 (SD26) is a further development of the floppy speeder **SpeedDOS+** by Oliver Eikemeier and Oliver Joppich from 1984. The number stands for the year 2026. SpeedDos26 is a sub-project of the **Multi-Speeder V3** and of **DolphinDos26**. It is a revision of the legendary firmware SpeedDOS+, so that it works better today with current hardware such as the SD2IEC. It now also includes versions for the 1571 and the C128. Computer and drive are connected by an 8-bit parallel cable at the user port in addition to the serial cable. In use it stays close to the original: parallel loading and saving, the fast loader, the DOS commands with the at sign, 40 tracks and the shortcuts for LOAD and SAVE work as before.
 
-The project consists of four parts:
+The project consists of five parts:
 
 | Part | What it does | Runs on |
 |---|---|---|
@@ -41,6 +41,7 @@ The project consists of four parts:
 | **C1541SpeedDOS26** | Drive firmware for the 1541 in two builds: 8 KB (upper ROM only) and 16 KB | 1541 with two ROMs, 1541-II, 1541 with Switchless Multi-Speeder V3 (bank 3) |
 | **C1571SpeedDOS26**, **C1571CRSpeedDOS26** (new) | Drive firmware for the 1571 in two builds (external 1571, 1571 in the C128DCR) with the parallel cable on a PIA 6821 (on the Multi-Speeder board), automatic 2 MHz mode, double-sided disks and a built-in fast loader | External 1571 and 1571 in the C128DCR with 1571 Switchless Multi-Speeder V3; draft: without Multi-Speeder with the PIA parallel port adapter |
 | **C128SpeedDos26** (new) | C128 kernal with burst, SpeedDOS parallel, JiffyDOS and serial, loading into any memory bank and the function keys of the C64 kernal; German (DIN) and US keyboard | C128 in C128 mode |
+| **VIC20SpeedDos26** (new) | VIC-20 kernal with SpeedDOS parallel (fast loader), JiffyDOS and serial, and the operation of the C64 kernal; PAL and NTSC | VIC-20 (VC20) |
 
 On the wire the 1571 behaves like a 1541 with SpeedDos26: every SpeedDos26 kernal works with both drives, and the C128 kernal also works with a 1541.
 
@@ -58,6 +59,8 @@ On the wire the 1571 behaves like a 1541 with SpeedDos26: every SpeedDos26 kerna
 | [`C1571CRSpeedDOS26.bin`](rom/C1571CRSpeedDOS26.bin) | 32 KB | DOS ROM (`$8000`–`$FFFF`) for the 1571 in the C128DCR (replaces 318047-01) |
 | [`C128SpeedDos26-DE.bin`](rom/C128SpeedDos26-DE.bin) | 16 KB | Kernal of the C128 (`$C000`–`$FFFF`) with German keyboard (DIN) |
 | [`C128SpeedDos26-EN.bin`](rom/C128SpeedDos26-EN.bin) | 16 KB | Kernal of the C128 (`$C000`–`$FFFF`) with US keyboard |
+| [`VIC20SpeedDos26PAL.bin`](rom/VIC20SpeedDos26PAL.bin) | 8 KB | Kernal of the VIC-20 (`$E000`–`$FFFF`) for PAL (replaces 901486-07) |
+| [`VIC20SpeedDos26NTSC.bin`](rom/VIC20SpeedDos26NTSC.bin) | 8 KB | Kernal of the VIC-20 (`$E000`–`$FFFF`) for NTSC (replaces 901486-06) |
 | [`C1541_29F040.BIN`](rom/C1541_29F040.BIN) | 512 KB | Complete EPROM image for the 1541 Switchless Multi-Speeder V3 with SpeedDos26 in bank 3 |
 
 The checksums of all files are in [`CHECKSUMS.md5`](CHECKSUMS.md5) and [`CHECKSUMS.sha256`](CHECKSUMS.sha256); the manual also states the MD5 of every ROM file.
@@ -77,6 +80,8 @@ The checksums of all files are in [`CHECKSUMS.md5`](CHECKSUMS.md5) and [`CHECKSU
 **The two 1571 ROMs are not interchangeable:** the external 1571 and the 1571 in the C128DCR have different hardware and therefore each need their own version; both behave the same.
 
 **C128:** For C128 mode, [`C128SpeedDos26-DE.bin`](rom/C128SpeedDos26-DE.bin) (German keyboard, DIN) or [`C128SpeedDos26-EN.bin`](rom/C128SpeedDos26-EN.bin) (US keyboard) replaces the kernal ROM of the C128 (318020-05, 16 KB). In the kernal switcher of the C128DCR the file belongs at `$xC000` of the bank, `C64IISpeedDos26.bin` at `$x8000`.
+
+**VIC20/VC20:** [`VIC20SpeedDos26PAL.bin`](rom/VIC20SpeedDos26PAL.bin) (PAL) or [`VIC20SpeedDos26NTSC.bin`](rom/VIC20SpeedDos26NTSC.bin) (NTSC) replaces the kernal ROM of the VIC-20 (901486-07 or 901486-06, 8 KB). It works with every drive ROM in the table above. A parallel cable for the C64 does not fit the VIC-20 unchanged: the wire from pin 8 of the user port must go to pin M. See the [manual](manuals/en/SpeedDos26_Manual.pdf), chapter “SpeedDos26 for VIC20/VC20”, and the [VIC-20 notes](docs/en/vic20-kernal.md).
 
 The kernal also works without the parallel cable and with any drive: on every access it detects by itself whether the addressed device supports the parallel cable, JiffyDOS or only the serial bus.
 
@@ -116,6 +121,7 @@ The kernal also works without the parallel cable and with any drive: on every ac
 - The coloured power-on screen and the function key assignment of DolphinDos26, with four additional keys for SD2IEC and printer.
 - LOAD and SAVE without a device address, DOS commands with `@` or `>`, `@$` shows the directory without changing the program in memory.
 - `@8` to `@11` (two digits up to `@19`) select the device; if it does not answer, `?DEVICE NOT PRESENT ERROR` appears.
+- CTRL+D changes to the next drive that is present (devices 8 to 19) and shows its number, as with JiffyDOS – on the C64 and the C128.
 - BASIC extras of SpeedDOS+: `!` (OLD), numbers with `$` (hexadecimal), `%` (binary) and `&` (octal), LIST with visible control characters.
 - Also tested with S-JiffyDOS 1541 (SJD41), an extension of the JiffyDOS ROM for the 1541 by Jochen Adler that the kernal addresses like a JiffyDOS drive (display `LOADING JD:`). Further information: [S-JIFFYDOS 1541 (funet.fi / zimmers.net)](https://bio.nic.funet.fi/pub/cbm/c64/diskutil/misc/s-jiffydos1541.html), [Commodore News: SJD41 (2013)](https://www.commodore-news.com/news/item/2755/en/mobile), [RetroTechCollection: JiffyDOS Kernal Upgrade](https://wiki.retrotechcollection.com/JiffyDOS_Kernal_Upgrade).
 - Removed compared with SpeedDOS+: the mini monitor, the Centronics interface and the screen hardcopy; the space is needed for the JiffyDOS protocol.
@@ -172,6 +178,16 @@ The kernal corresponds to the C128 kernal DolphinDos26, with SpeedDOS instead of
 </p>
 
 <p align="center"><em>Boot screen of the C128 kernal SpeedDos26 in 40-column mode and in 80-column mode (VDC).</em></p>
+
+### VIC20SpeedDos26 kernal (new)
+
+- **Three ways:** SpeedDOS parallel, JiffyDOS, serial. The kernal decides anew every time a device is addressed.
+- **Fast loader:** the same as in the C64 kernal; the drive program reads the track and sends the blocks over the parallel cable. Display: `LOADING SD: $1201-$xxxx`; with JiffyDOS `JD:`. Saving, `VERIFY` and the directory run byte by byte over the parallel cable.
+- **Operation:** `@` and `>` commands, default device, CTRL+D for the next drive, function keys with the SD2IEC keys on the C= level, `!` (OLD), numbers with `$`, `%` and `&`, `LIST` with visible control characters, CTRL + DEL, CTRL + HOME, reset keys.
+- **Parallel cable:** VIA 1 at the user port; data on the same pins as on the C64, the pulse to the drive on pin M instead of pin 8.
+- **Power-on screen:** `SPEEDDOS26    VIC-20` with `PAL` or `NTSC`.
+- There is no cassette and no RS-232.
+- Technical details: [docs/en/vic20-kernal.md](docs/en/vic20-kernal.md).
 
 ## Quick start
 
@@ -263,23 +279,32 @@ Measured with a C128 and a 1571 (C128DCR) using a BASIC program of 30 KB (118 bl
 
 | Bank | Contents | Command |
 |---|---|---|
-| 1, 4, 5, 6 | CBM DOS 2.6 | `1@RNROM` etc. |
+| 1 | CBM DOS 2.6 | `1@RNROM` |
 | 2 | DolphinDOS 2.0 | `2@RNROM` |
 | 3 | **SpeedDos26** | `3@RNROM` |
+| 4 | CBM DOS 2.6; recommended place for your own JiffyDOS ROM | `4@RNROM` |
+| 5, 6 | CBM DOS 2.6, free for further DOS versions | `5@RNROM`, `6@RNROM` |
 | 7 | DolphinDos26DD2 | `7@RNROM` |
 | 8 | DolphinDos26 | `8@RNROM` |
 
+**JiffyDOS:** JiffyDOS is not part of the project and is not contained in any template. If you own a licensed JiffyDOS ROM for the 1541, the best place for it is **bank 4** (`4@RNROM`): the 16 KB file goes to the end of the bank, from offset `$3C000` of the image. Banks 5 and 6 are suitable as well. The easiest way is the MS-ROM-Builder from the hardware project of the 1541.
+
 **C128:** Program `C128SpeedDos26-DE.bin` (German keyboard, DIN) or `C128SpeedDos26-EN.bin` (US keyboard) and fit it in place of the kernal ROM 318020-05 (16 KB). In the kernal switcher of the C128DCR the file belongs at `$xC000` of the bank, `C64IISpeedDos26.bin` at `$x8000`.
+
+**VIC20/VC20:** Program `VIC20SpeedDos26PAL.bin` (PAL) or `VIC20SpeedDos26NTSC.bin` (NTSC), 8 KB each, and fit it in place of the kernal ROM 901486-07 (PAL) or 901486-06 (NTSC). The original ROM is a type 2364 with 24 pins; a 2764 or 27C64 EPROM needs an adapter socket. For the parallel cable move the wire from pin 8 of the user port to pin M.
 
 **1571 Switchless Multi-Speeder V3:** In the EPROM images for the 1571 Multi-Speeder V3, SpeedDos26 is in **bank 5 and bank 6**; switch with `@I:5@RNROM` or `@I:6@RNROM`. The drive ROM – `C1571SpeedDOS26.bin` (external 1571) or `C1571CRSpeedDOS26.bin` (C128DCR), 32 KB each – lies in the upper half of the bank (`$x8000`–`$xFFFF`). Program a 29F040 (alternatively 27C040 or SST39SF040).
 
 | Bank | Drive | Kernal in the C128DCR | Command |
 |---|---|---|---|
-| 1, 2, 7, 8 | Commodore DOS | Commodore | `1@RNROM` etc. |
+| 1, 2, 8 | Commodore DOS | Commodore | `1@RNROM` etc. |
 | 3 | DolphinDOS 3 | DolphinDOS | `3@RNROM` |
 | 4 | DolphinDos26 | DolphinDos26 | `4@RNROM` |
 | 5 | **SpeedDos26** | C128SpeedDos26 with US keyboard, C64SpeedDos26 | `5@RNROM` |
 | 6 | **SpeedDos26** | C128SpeedDos26 with German keyboard, C64SpeedDos26 | `6@RNROM` |
+| 7 | Commodore DOS; recommended place for your own JiffyDOS ROM | Commodore; with JiffyDOS the matching JiffyDOS kernals | `7@RNROM` |
+
+**JiffyDOS:** JiffyDOS is not part of the project and is not contained in any template. If you own a licensed JiffyDOS ROM for the 1571, the best place for it is **bank 7** (`7@RNROM`): the 32 KB file goes into the upper half of the bank, from offset `$68000` of the image. Bank 8 is suitable as well. In the C128DCR, the matching JiffyDOS kernals then belong in the same bank of the kernal switcher. The easiest way is the MS-ROM-Builder from the hardware projects.
 
 In the C128DCR, drive and kernal switch together. On the external 1571, bank 5 and bank 6 select the same drive ROM; the computer has its own kernal ROM there. The ready-made 512 KB images named in the manual (`C1571_29F040.BIN`, `C1571_C128DCR_29F040.BIN`, `C128DCR_KERNAL_29F040-DE.BIN`, `C128DCR_KERNAL_29F040-US.BIN`) also contain other firmware and are not part of this repository; they are provided with the hardware projects.
 
@@ -299,13 +324,14 @@ Full steps for C64 and 1541, including personalising the colours, are in the man
 - **1571 firmware:** no 40 tracks (in the double-sided format track 36 is already the reverse side; a `+` after the ID has no effect), no fast formatting and no SpeedDOS sector order when saving. The two builds are not interchangeable (external 1571 / C128DCR). In C128 mode the kernal loads from the 1571 in burst mode (`LOADING BU:`), because the parallel fast loader would be slower there; saving is not faster than with Commodore DOS in 1571 mode (see “Speed on the 1571”).
 - **PIA parallel port for the 1571:** a draft (schematic rev. 0.1), not yet built or measured; the timing at 2 MHz has not been calculated.
 - **C128 kernal:** no cassette and no RS-232.
+- **VIC-20 kernal:** no cassette and no RS-232. A parallel cable for the C64 does not fit unchanged (pin M instead of pin 8). Freezing the output, the visible control characters in the directory and the colour bars of the C64 kernal are missing.
 
 ## What is in this repository?
 
 ```
-rom/             C64 and C128 kernal, drive ROMs, EPROM image for the 1541 Multi-Speeder
+rom/             C64, C128 and VIC-20 kernal, drive ROMs, EPROM image for the 1541 Multi-Speeder
 manuals/en, de   Manual as PDF
-docs/en, de      Technical notes (C64 and C128 kernal, 1541 and 1571 firmware)
+docs/en, de      Technical notes (C64, C128 and VIC-20 kernal, 1541 and 1571 firmware)
 assets/          Images for this page
 tools/           Maintenance script for this repository
 CHECKSUMS.*      MD5 and SHA-256 of all published files
@@ -319,11 +345,11 @@ Verify your download with `sha256sum -c CHECKSUMS.sha256` or `md5sum -c CHECKSUM
 
 ## JiffyDOS licence: please check
 
-The C64 and the C128 kernal contain JiffyDOS transfer routines that are instruction-identical to a JiffyDOS kernal (C64: JiffyDOS sd2iec kernal, C128: JiffyDOS C128 kernal; taken over from the C64 and the C128 kernal DolphinDos26). The JiffyDOS drive firmware is not included. Jim Brain of RETRO Innovations, which holds the JiffyDOS licence rights, confirmed that publishing the kernals on GitHub is fine. As he describes it, code that implements the same transfer behaviour without being an exact copy needs no licence. If the transfer code is the same, as it is here, he believes the end user would need one.
+The C64, the C128 and the VIC-20 kernals contain JiffyDOS transfer routines that are instruction-identical to a JiffyDOS kernal (C64: JiffyDOS sd2iec kernal, C128: JiffyDOS C128 kernal, VIC-20: JiffyDOS VIC-20 kernal; taken over from the C64, the C128 and the VIC-20 kernal DolphinDos26). The JiffyDOS drive firmware is not included. Jim Brain of RETRO Innovations, which holds the JiffyDOS licence rights, confirmed that publishing the kernals on GitHub is fine. As he describes it, code that implements the same transfer behaviour without being an exact copy needs no licence. If the transfer code is the same, as it is here, he believes the end user would need one.
 
 **Please check for yourself whether your use calls for an official JiffyDOS licence:** <https://www.jiffydos.com>
 
-Details: [docs/en/speeddos26-notes.md](docs/en/speeddos26-notes.md#jiffydos-jiffydos), [docs/en/c128-kernal.md](docs/en/c128-kernal.md).
+Details: [docs/en/speeddos26-notes.md](docs/en/speeddos26-notes.md#jiffydos-jiffydos), [docs/en/c128-kernal.md](docs/en/c128-kernal.md), [docs/en/vic20-kernal.md](docs/en/vic20-kernal.md).
 
 ## Origin and credits
 
@@ -357,7 +383,7 @@ Terms of use: [LICENSE.md](LICENSE.md). JiffyDOS is licensed today via Jim Brain
 
 SpeedDos26 (SD26) ist eine Weiterentwicklung des Floppy-Beschleunigers **SpeedDOS+** von Oliver Eikemeier und Oliver Joppich aus dem Jahr 1984. Die Zahl steht für das Jahr 2026. SpeedDos26 ist ein Unterprojekt des **Multi-Speeder V3** und von **DolphinDos26**. Es ist eine Überarbeitung der legendären Firmware SpeedDOS+, damit sie heute besser mit aktueller Hardware wie dem SD2IEC zusammenarbeitet. Dazu gehören inzwischen auch Fassungen für die 1571 und den C128. Rechner und Laufwerk sind zusätzlich zum seriellen Kabel über ein 8-Bit-Parallelkabel am Userport verbunden. In der Bedienung bleibt es nah am Original: paralleles Laden und Speichern, der Schnelllader, die DOS-Befehle mit dem Klammeraffen, 40 Spuren und die Erleichterungen für LOAD und SAVE funktionieren wie gewohnt.
 
-Das Projekt besteht aus vier Teilen:
+Das Projekt besteht aus fünf Teilen:
 
 | Teil | Aufgabe | Läuft auf |
 |---|---|---|
@@ -365,6 +391,7 @@ Das Projekt besteht aus vier Teilen:
 | **C1541SpeedDOS26** | Laufwerks-Firmware für die 1541 in zwei Fassungen: 8 KB (nur oberes ROM) und 16 KB | 1541 mit zwei ROMs, 1541-II, 1541 mit Switchless Multi-Speeder V3 (Bank 3) |
 | **C1571SpeedDOS26**, **C1571CRSpeedDOS26** (neu) | Laufwerks-Firmware für die 1571 in zwei Fassungen (externe 1571, 1571 im C128DCR) mit dem Parallelkabel an einem PIA 6821 (auf der Multi-Speeder-Platine), automatischem 2-MHz-Betrieb, doppelseitigen Disketten und eingebautem Schnelllader | Externe 1571 und 1571 im C128DCR mit 1571 Switchless Multi-Speeder V3; Entwurf: ohne Multi-Speeder mit dem Adapter „PIA-Parallelport“ |
 | **C128SpeedDos26** (neu) | C128-Kernal mit Burst, SpeedDOS parallel, JiffyDOS und seriell, Laden in jede Speicherbank und den Funktionstasten des C64-Kernals; deutsche (DIN) und US-Tastatur | C128 im C128-Modus |
+| **VIC20SpeedDos26** (neu) | VIC-20-Kernal mit SpeedDOS parallel (Schnelllader), JiffyDOS und seriell und der Bedienung des C64-Kernals; PAL und NTSC | VIC-20 (VC20) |
 
 Auf der Leitung verhält sich die 1571 wie eine 1541 mit SpeedDos26: Jeder SpeedDos26-Kernal arbeitet mit beiden Laufwerken, und der C128-Kernal arbeitet auch mit einer 1541.
 
@@ -380,6 +407,8 @@ Auf der Leitung verhält sich die 1571 wie eine 1541 mit SpeedDos26: Jeder Speed
 | [`C1571CRSpeedDOS26.bin`](rom/C1571CRSpeedDOS26.bin) | 32 KB | DOS-ROM (`$8000`–`$FFFF`) für die 1571 im C128DCR (ersetzt 318047-01) |
 | [`C128SpeedDos26-DE.bin`](rom/C128SpeedDos26-DE.bin) | 16 KB | Kernal des C128 (`$C000`–`$FFFF`) mit deutscher Tastatur (DIN) |
 | [`C128SpeedDos26-EN.bin`](rom/C128SpeedDos26-EN.bin) | 16 KB | Kernal des C128 (`$C000`–`$FFFF`) mit US-Tastatur |
+| [`VIC20SpeedDos26PAL.bin`](rom/VIC20SpeedDos26PAL.bin) | 8 KB | Kernal des VIC-20 (`$E000`–`$FFFF`) für PAL (ersetzt 901486-07) |
+| [`VIC20SpeedDos26NTSC.bin`](rom/VIC20SpeedDos26NTSC.bin) | 8 KB | Kernal des VIC-20 (`$E000`–`$FFFF`) für NTSC (ersetzt 901486-06) |
 | [`C1541_29F040.BIN`](rom/C1541_29F040.BIN) | 512 KB | Vollständiges EPROM-Abbild für den 1541 Switchless Multi-Speeder V3 mit SpeedDos26 in Bank 3 |
 
 Die Prüfsummen aller Dateien stehen in [`CHECKSUMS.md5`](CHECKSUMS.md5) und [`CHECKSUMS.sha256`](CHECKSUMS.sha256); das Handbuch nennt zusätzlich die MD5 jeder ROM-Datei.
@@ -399,6 +428,8 @@ Die Prüfsummen aller Dateien stehen in [`CHECKSUMS.md5`](CHECKSUMS.md5) und [`C
 **Die beiden 1571-ROMs sind nicht austauschbar:** Die externe 1571 und die 1571 im C128DCR haben verschiedene Hardware und brauchen deshalb je ihre eigene Fassung; beide verhalten sich gleich.
 
 **C128:** Für den C128-Modus ersetzt [`C128SpeedDos26-DE.bin`](rom/C128SpeedDos26-DE.bin) (deutsche Tastatur, DIN) oder [`C128SpeedDos26-EN.bin`](rom/C128SpeedDos26-EN.bin) (US-Tastatur) das Kernal-ROM des C128 (318020-05, 16 KB). Im Kernal-Umschalter des C128DCR gehört die Datei nach `$xC000` der Bank, `C64IISpeedDos26.bin` nach `$x8000`.
+
+**VIC20/VC20:** [`VIC20SpeedDos26PAL.bin`](rom/VIC20SpeedDos26PAL.bin) (PAL) oder [`VIC20SpeedDos26NTSC.bin`](rom/VIC20SpeedDos26NTSC.bin) (NTSC) ersetzt das Kernal-ROM des VIC-20 (901486-07 bzw. 901486-06, 8 KB). Er arbeitet mit jedem Laufwerks-ROM der Tabelle oben. Ein Parallelkabel für den C64 passt am VIC-20 nicht unverändert: die Ader von Pin 8 des Userports muss an Pin M liegen. Siehe [Handbuch](manuals/de/SpeedDos26_Handbuch.pdf), Kapitel „SpeedDos26 für VIC20/VC20“, und die [VIC-20-Notizen](docs/de/vic20-kernal.md).
 
 Der Kernal arbeitet auch ohne Parallelkabel und mit jedem Laufwerk: Er erkennt bei jedem Zugriff selbst, ob das angesprochene Gerät das Parallelkabel, JiffyDOS oder nur den seriellen Bus beherrscht.
 
@@ -438,6 +469,7 @@ Der Kernal arbeitet auch ohne Parallelkabel und mit jedem Laufwerk: Er erkennt b
 - Das farbige Einschaltbild und die Belegung der Funktionstasten aus DolphinDos26, mit vier zusätzlichen Tasten für SD2IEC und Drucker.
 - LOAD und SAVE ohne Geräteadresse, DOS-Befehle mit `@` oder `>`, `@$` zeigt das Inhaltsverzeichnis, ohne das Programm im Speicher zu verändern.
 - `@8` bis `@11` (zweistellig bis `@19`) wählen das Gerät; antwortet es nicht, erscheint `?DEVICE NOT PRESENT ERROR`.
+- CTRL+D wechselt zum nächsten vorhandenen Laufwerk (Geräte 8 bis 19) und zeigt dessen Nummer an, wie bei JiffyDOS – am C64 und am C128.
 - BASIC-Erweiterungen von SpeedDOS+: `!` (OLD), Zahlen mit `$` (hexadezimal), `%` (binär) und `&` (oktal), LIST mit sichtbaren Steuerzeichen.
 - Auch mit S-JiffyDOS 1541 (SJD41) getestet, einer Erweiterung des JiffyDOS-ROMs für die 1541 von Jochen Adler, die der Kernal wie ein JiffyDOS-Laufwerk anspricht (Anzeige `LOADING JD:`). Weitere Informationen: [S-JIFFYDOS 1541 (funet.fi / zimmers.net)](https://bio.nic.funet.fi/pub/cbm/c64/diskutil/misc/s-jiffydos1541.html), [Commodore News: SJD41 (2013)](https://www.commodore-news.com/news/item/2755/en/mobile), [RetroTechCollection: JiffyDOS Kernal Upgrade](https://wiki.retrotechcollection.com/JiffyDOS_Kernal_Upgrade).
 - Gegenüber SpeedDOS+ entfallen der Mini-Monitor, die Centronics-Schnittstelle und der Bildschirmausdruck; der Platz wird für das JiffyDOS-Protokoll gebraucht.
@@ -494,6 +526,16 @@ Der Kernal entspricht dem C128-Kernal DolphinDos26, mit SpeedDOS statt DolphinDO
 </p>
 
 <p align="center"><em>Einschaltbild des C128-Kernals SpeedDos26 im 40-Zeichen-Modus und im 80-Zeichen-Modus (VDC).</em></p>
+
+### Kernal VIC20SpeedDos26 (neu)
+
+- **Drei Wege:** SpeedDOS parallel, JiffyDOS, seriell. Der Kernal entscheidet bei jedem Ansprechen eines Geräts neu.
+- **Schnelllader:** derselbe wie im C64-Kernal; das Laufwerksprogramm liest die Spur und sendet die Blöcke über das Parallelkabel. Anzeige: `LOADING SD: $1201-$xxxx`; bei JiffyDOS `JD:`. Speichern, `VERIFY` und das Directory laufen byteweise über das Parallelkabel.
+- **Bedienung:** `@`- und `>`-Befehle, Standardgerät, CTRL+D für das nächste Laufwerk, Funktionstasten mit den SD2IEC-Tasten auf der C=-Ebene, `!` (OLD), Zahlen mit `$`, `%` und `&`, `LIST` mit sichtbaren Steuerzeichen, CTRL + DEL, CTRL + HOME, Reset-Tasten.
+- **Parallelkabel:** VIA 1 am Userport; Daten an denselben Pins wie am C64, der Impuls zum Laufwerk an Pin M statt Pin 8.
+- **Einschaltbild:** `SPEEDDOS26    VIC-20` mit `PAL` bzw. `NTSC`.
+- Kassette und RS-232 gibt es nicht.
+- Technische Einzelheiten: [docs/de/vic20-kernal.md](docs/de/vic20-kernal.md).
 
 ## Schnellstart
 
@@ -585,23 +627,32 @@ Gemessen mit einem C128 und einer 1571 (C128DCR) an einem BASIC-Programm mit 30 
 
 | Bank | Inhalt | Befehl |
 |---|---|---|
-| 1, 4, 5, 6 | CBM DOS 2.6 | `1@RNROM` usw. |
+| 1 | CBM DOS 2.6 | `1@RNROM` |
 | 2 | DolphinDOS 2.0 | `2@RNROM` |
 | 3 | **SpeedDos26** | `3@RNROM` |
+| 4 | CBM DOS 2.6; Empfehlung: Platz für ein eigenes JiffyDOS-ROM | `4@RNROM` |
+| 5, 6 | CBM DOS 2.6, frei für weitere DOS-Versionen | `5@RNROM`, `6@RNROM` |
 | 7 | DolphinDos26DD2 | `7@RNROM` |
 | 8 | DolphinDos26 | `8@RNROM` |
 
+**JiffyDOS:** JiffyDOS gehört nicht zum Projekt und ist in keiner Vorlage enthalten. Wer ein eigenes, lizenziertes JiffyDOS-ROM für die 1541 besitzt, legt es am besten in **Bank 4** (`4@RNROM`): die 16-KB-Datei kommt an das Ende der Bank, ab Offset `$3C000` des Abbilds. Die Bänke 5 und 6 eignen sich ebenso. Am einfachsten geht das mit dem MS-ROM-Builder aus dem Hardware-Projekt der 1541.
+
 **C128:** `C128SpeedDos26-DE.bin` (deutsche Tastatur, DIN) oder `C128SpeedDos26-EN.bin` (US-Tastatur) brennen und anstelle des Kernal-ROMs 318020-05 (16 KB) einsetzen. Im Kernal-Umschalter des C128DCR gehört die Datei nach `$xC000` der Bank, `C64IISpeedDos26.bin` nach `$x8000`.
+
+**VIC20/VC20:** `VIC20SpeedDos26PAL.bin` (PAL) oder `VIC20SpeedDos26NTSC.bin` (NTSC), je 8 KB, brennen und anstelle des Kernal-ROMs 901486-07 (PAL) bzw. 901486-06 (NTSC) einsetzen. Das Original-ROM ist ein Typ 2364 mit 24 Pins; ein EPROM 2764 oder 27C64 braucht einen Adaptersockel. Für das Parallelkabel die Ader von Pin 8 des Userports an Pin M legen.
 
 **1571 Switchless Multi-Speeder V3:** In den EPROM-Abbildern für den 1571 Multi-Speeder V3 liegt SpeedDos26 in **Bank 5 und Bank 6**; umschalten mit `@I:5@RNROM` bzw. `@I:6@RNROM`. Das Laufwerks-ROM – `C1571SpeedDOS26.bin` (externe 1571) bzw. `C1571CRSpeedDOS26.bin` (C128DCR), je 32 KB – liegt in der oberen Hälfte der Bank (`$x8000`–`$xFFFF`). Einen 29F040 (alternativ 27C040 oder SST39SF040) brennen.
 
 | Bank | Laufwerk | Kernal im C128DCR | Befehl |
 |---|---|---|---|
-| 1, 2, 7, 8 | Commodore-DOS | Commodore | `1@RNROM` usw. |
+| 1, 2, 8 | Commodore-DOS | Commodore | `1@RNROM` usw. |
 | 3 | DolphinDOS 3 | DolphinDOS | `3@RNROM` |
 | 4 | DolphinDos26 | DolphinDos26 | `4@RNROM` |
 | 5 | **SpeedDos26** | C128SpeedDos26 mit US-Tastatur, C64SpeedDos26 | `5@RNROM` |
 | 6 | **SpeedDos26** | C128SpeedDos26 mit deutscher Tastatur, C64SpeedDos26 | `6@RNROM` |
+| 7 | Commodore-DOS; Empfehlung: Platz für ein eigenes JiffyDOS-ROM | Commodore; mit JiffyDOS die passenden JiffyDOS-Kernals | `7@RNROM` |
+
+**JiffyDOS:** JiffyDOS gehört nicht zum Projekt und ist in keiner Vorlage enthalten. Wer ein eigenes, lizenziertes JiffyDOS-ROM für die 1571 besitzt, legt es am besten in **Bank 7** (`7@RNROM`): die 32-KB-Datei kommt in die obere Hälfte der Bank, ab Offset `$68000` des Abbilds. Bank 8 eignet sich ebenso. Im C128DCR gehören dann die passenden JiffyDOS-Kernals in dieselbe Bank des Kernal-Umschalters. Am einfachsten geht das mit dem MS-ROM-Builder aus den Hardware-Projekten.
 
 Im C128DCR schalten Laufwerk und Kernal gemeinsam um. Bei der externen 1571 wählen Bank 5 und Bank 6 dasselbe Laufwerks-ROM; der Rechner hat dort sein eigenes Kernal-ROM. Die im Handbuch genannten fertigen 512-KB-Abbilder (`C1571_29F040.BIN`, `C1571_C128DCR_29F040.BIN`, `C128DCR_KERNAL_29F040-DE.BIN`, `C128DCR_KERNAL_29F040-US.BIN`) enthalten auch andere Firmware und sind nicht Teil dieses Repositorys; sie werden mit den Hardware-Projekten bereitgestellt.
 
@@ -621,13 +672,14 @@ Alle Schritte für C64 und 1541, auch das Anpassen der Farben, stehen im Handbuc
 - **1571-Firmware:** keine 40 Spuren (im doppelseitigen Format ist Spur 36 schon die Rückseite; ein `+` hinter der ID hat keine Wirkung), kein schnelles Formatieren und keine SpeedDOS-Sektorfolge beim Speichern. Die beiden Fassungen sind nicht austauschbar (externe 1571 / C128DCR). Im C128-Modus lädt der Kernal von der 1571 im Burst-Modus (`LOADING BU:`), weil der Schnelllader über das Parallelkabel dort langsamer wäre; Speichern ist nicht schneller als mit dem Commodore-DOS im 1571-Modus (siehe „Geschwindigkeit an der 1571“).
 - **PIA-Parallelport für die 1571:** ein Entwurf (Schaltplan Rev. 0.1), noch nicht aufgebaut und nicht gemessen; das Zeitverhalten bei 2 MHz ist nicht nachgerechnet.
 - **C128-Kernal:** keine Kassette und kein RS-232.
+- **VIC-20-Kernal:** keine Kassette und kein RS-232. Ein Parallelkabel für den C64 passt nicht unverändert (Pin M statt Pin 8). Das Einfrieren der Ausgabe, die sichtbaren Steuerzeichen im Directory und die Farbbalken des C64-Kernals fehlen.
 
 ## Was liegt in diesem Repository?
 
 ```
-rom/             C64- und C128-Kernal, Laufwerks-ROMs, EPROM-Abbild für den 1541 Multi-Speeder
+rom/             C64-, C128- und VIC-20-Kernal, Laufwerks-ROMs, EPROM-Abbild für den 1541 Multi-Speeder
 manuals/en, de   Handbuch als PDF
-docs/en, de      Technische Notizen (C64- und C128-Kernal, 1541- und 1571-Firmware)
+docs/en, de      Technische Notizen (C64-, C128- und VIC-20-Kernal, 1541- und 1571-Firmware)
 assets/          Bilder für diese Seite
 tools/           Pflegeskript für dieses Repository
 CHECKSUMS.*      MD5 und SHA-256 aller veröffentlichten Dateien
@@ -641,11 +693,11 @@ Download prüfen mit `sha256sum -c CHECKSUMS.sha256` oder `md5sum -c CHECKSUMS.m
 
 ## JiffyDOS-Lizenz: bitte prüfen
 
-Der C64- und der C128-Kernal enthalten JiffyDOS-Übertragungsroutinen, die befehlsgleich aus einem JiffyDOS-Kernal stammen (C64: JiffyDOS-sd2iec-Kernal, C128: JiffyDOS-C128-Kernal; übernommen aus dem C64- und dem C128-Kernal DolphinDos26). Die JiffyDOS-Firmware für das Laufwerk ist nicht enthalten. Jim Brain von RETRO Innovations, das die JiffyDOS-Lizenzrechte hält, hat die Veröffentlichung der Kernals auf GitHub erlaubt. Nach seiner Beschreibung ist für Code, der dasselbe Übertragungsverhalten umsetzt, aber keine genaue Kopie ist, keine Lizenz nötig. Ist der Übertragungscode gleich, wie hier, wäre nach seiner Einschätzung beim Endnutzer eine Lizenz erforderlich.
+Der C64-, der C128- und der VIC-20-Kernal enthalten JiffyDOS-Übertragungsroutinen, die befehlsgleich aus einem JiffyDOS-Kernal stammen (C64: JiffyDOS-sd2iec-Kernal, C128: JiffyDOS-C128-Kernal, VIC-20: JiffyDOS-VIC-20-Kernal; übernommen aus dem C64-, dem C128- und dem VIC-20-Kernal DolphinDos26). Die JiffyDOS-Firmware für das Laufwerk ist nicht enthalten. Jim Brain von RETRO Innovations, das die JiffyDOS-Lizenzrechte hält, hat die Veröffentlichung der Kernals auf GitHub erlaubt. Nach seiner Beschreibung ist für Code, der dasselbe Übertragungsverhalten umsetzt, aber keine genaue Kopie ist, keine Lizenz nötig. Ist der Übertragungscode gleich, wie hier, wäre nach seiner Einschätzung beim Endnutzer eine Lizenz erforderlich.
 
 **Bitte prüfe selbst, ob du wegen der Nutzung eine offizielle JiffyDOS-Lizenz erwerben solltest:** <https://www.jiffydos.com>
 
-Einzelheiten: [docs/de/speeddos26-notes.md](docs/de/speeddos26-notes.md#jiffydos-jiffydos), [docs/de/c128-kernal.md](docs/de/c128-kernal.md).
+Einzelheiten: [docs/de/speeddos26-notes.md](docs/de/speeddos26-notes.md#jiffydos-jiffydos), [docs/de/c128-kernal.md](docs/de/c128-kernal.md), [docs/de/vic20-kernal.md](docs/de/vic20-kernal.md).
 
 ## Herkunft und Dank
 
